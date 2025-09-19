@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <!-- IMPORTANT: Replace with your real Google Client ID -->
+    <meta name="google-signin-client_id" content="189323019060-dh1aj9t6ua6319u7vpl2otjhn19ireea.apps.googleusercontent.com">
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Sign-In Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Admin Panel Login</h2>
+            <!-- Google Sign-In button -->
+            <div id="g_id_onload"
+                 data-client_id="189323019060-dh1aj9t6ua6319u7vpl2otjhn19ireea.apps.googleusercontent.com"
+                 data-callback="handleGoogleSignInForAdmin"
+                 data-auto_select="true"
+                 data-itp_support="true">
+            </div>
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-size="large"
+                 data-theme="outline"
+                 data-text="sign_in_with">
+            </div>
+            <p class="form-message" id="login-message"></p>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>

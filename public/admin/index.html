@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arunjuna Electrical Shop - Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Admin Panel</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#dashboard" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="#products" class="nav-link"><i class="fas fa-box"></i> Products</a></li>
+            <li><a href="#orders" class="nav-link"><i class="fas fa-receipt"></i> Orders</a></li>
+            <li><a href="#reviews" class="nav-link"><i class="fas fa-star"></i> Reviews</a></li>
+            <li><a href="#order-address" class="nav-link"><i class="fas fa-map-marker-alt"></i> Order Addresses</a></li>
+            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header class="main-header">
+            <h2 id="main-header-title">Dashboard Overview</h2>
+            <div class="user-wrapper">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <h4>Admin</h4>
+                    <small>Super Admin</small>
+                </div>
+            </div>
+        </header>
+
+        <section id="dashboard" style="display: none;">
+            <div class="cards-container">
+                <div class="card">
+                    <div><h2><span id="total-revenue">0.00</span></h2><span>Total Revenue</span></div>
+                    <i class="fas fa-rupee-sign"></i>
+                </div>
+                <div class="card">
+                    <div><h2><span id="total-orders">0</span></h2><span>Total Orders</span></div>
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div class="card">
+                    <div><h2><span id="total-products">0</span></h2><span>Total Products</span></div>
+                    <i class="fas fa-box"></i>
+                </div>
+            </div>
+            <div class="dashboard-actions">
+                <button id="download-dashboard-pdf" class="btn"><i class="fas fa-download"></i> Download All Reports</button>
+            </div>
+        </section>
+
+        <section id="products" style="display: none;">
+            <div class="card-grid">
+                <div class="card-header">
+                    <h3>All Products</h3>
+                    <div>
+                        <button id="add-product-btn" class="btn">Add Product</button>
+                        <button id="download-products-pdf" class="btn"><i class="fas fa-download"></i> Download PDF</button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>ID</th><th>Name</th><th>Brand</th><th>Price</th><th>Stock</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="products-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="orders" style="display: none;">
+            <div class="card-grid">
+                <div class="card-header">
+                    <h3>All Orders</h3>
+                    <div><button id="download-orders-pdf" class="btn"><i class="fas fa-download"></i> Download PDF</button></div>
+                </div>
+                <div class="card-body">
+                    <div class="order-filters">
+                        <button class="filter-btn active" data-status="All">All</button>
+                        <button class="filter-btn" data-status="Pending">Pending</button>
+                        <button class="filter-btn" data-status="Confirmed">Confirmed</button>
+                        <button class="filter-btn" data-status="Shipped">Shipped</button>
+                        <button class="filter-btn" data-status="Delivered">Delivered</button>
+                        <button class="filter-btn" data-status="Cancelled">Cancelled</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead><tr><th>Order ID</th><th>Customer</th><th>Products</th><th>Total Amount</th><th>Payment Method</th><th>Status</th><th>Actions</th></tr></thead>
+                            <tbody id="orders-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" style="display: none;">
+            <div class="card-grid">
+                <div class="card-header"><h3>Customer Reviews</h3></div>
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Product</th><th>Customer</th><th>Rating</th><th>Comment</th><th>Date</th></tr></thead>
+                        <tbody id="reviews-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NEW SECTION: Order Addresses -->
+        <section id="order-address" style="display: none;">
+            <div class="card-grid">
+                <div class="card-header"><h3>Order Addresses</h3></div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Full Name</th>
+                                <th>Mobile Number</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-address-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Modal -->
+        <div id="product-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header"><h3 id="form-title">Add New Product</h3><span class="close-button">&times;</span></div>
+                <div class="modal-body">
+                    <form id="product-form">
+                        <input type="hidden" id="product-id">
+                        <div class="form-group"><label for="name">Product Name</label><input type="text" id="name" required></div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="brand">Brand</label><input type="text" id="brand"></div>
+                            <div class="form-group"><label for="price">Price</label><input type="number" id="price" step="0.01" required></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="stock">Stock</label><input type="number" id="stock" required></div>
+                            <div class="form-group"><label for="image_url">Image URL</label><input type="text" id="image_url"></div>
+                        </div>
+                        <div class="form-group"><label for="image">Upload Image</label><input type="file" id="image" accept="image/*"></div>
+                        <div class="form-group"><label for="description">Description</label><textarea id="description"></textarea></div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn">Save Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Details Modal -->
+        <div id="order-details-modal-admin" class="modal">
+            <div class="modal-content">
+                <div class="modal-header"><h3>Order Details</h3><span class="close-button">&times;</span></div>
+                <div class="modal-body" id="order-details-body-admin"></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>

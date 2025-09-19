@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arunjuna Electrical Shop</title>
+    <meta name="google-signin-client_id" content="189323019060-dh1aj9t6ua6319u7vpl2otjhn19ireea.apps.googleusercontent.com">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="logo"><a href="#home">Arunjuna Electricals</a></h1>
+            <nav id="main-nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <div id="auth-links">
+                     <div id="g_id_onload" data-client_id="189323019060-dh1aj9t6ua6319u7vpl2otjhn19ireea.apps.googleusercontent.com" data-callback="handleGoogleSignIn"></div>
+                    <div class="g_id_signin" data-type="standard"></div>
+                </div>
+                <div id="user-info" style="display: none;">
+                    <a href="#account" id="user-icon-link" class="user-icon-link"><i class="fas fa-user-circle"></i></a>
+                    <button id="logout-btn" class="btn">Logout</button>
+                </div>
+                <div class="cart-icon-wrapper" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home-section" class="page-section">
+            <div class="container">
+                <!-- NEW: Image Slider -->
+                <div class="slider-container">
+                    <div class="slider-wrapper">
+                        <div class="slider-slide"><img src="uploads/lapp-kabel-industrial-cable-desktop.webp" alt="Offer 1"></div>
+                        <div class="slider-slide"><img src="uploads/TDK-Epcos-AC-MFD-Desktop.webp" alt="Offer 2"></div>
+                        <div class="slider-slide"><img src="uploads/electric-wire-discount-desktop.webp" alt="Offer 3"></div>
+                        <div class="slider-slide"><img src="uploads/Sinova_3VJ_MCCB.webp" alt="Offer 4"></div>
+                        <div class="slider-slide"><img src="uploads/MPCB_desk.webp" alt="Offer 5"></div>
+                        <div class="slider-slide"><img src="uploads/SWITCH-09.webp" alt="Offer 6"></div>
+                    </div>
+                    <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+
+                <div class="features-section">
+                     <div class="container">
+                        <div class="feature"><i class="fas fa-truck"></i><h3>Fast Delivery</h3><p>Nationwide Shipping</p></div>
+                        <div class="feature"><i class="fas fa-shield-alt"></i><h3>Quality Assured</h3><p>Trusted Brands Only</p></div>
+                        <div class="feature"><i class="fas fa-headset"></i><h3>Expert Support</h3><p>Here to Help 24/7</p></div>
+                        <div class="feature"><i class="fas fa-check-circle"></i><h3>Secure Payments</h3><p>Safe & Encrypted</p></div>
+                    </div>
+                </div>
+                <div class="brands-section">
+                    <h2 class="section-title">Shop 25+ Brands Products</h2>
+                    <div class="brands-grid">
+                        <div class="brand-logo"><img src="uploads/6-ANCHOR_1.webp" alt="Anchor"></div>
+                        <div class="brand-logo"><img src="uploads/21-HAVELLS_1.webp" alt="Havells"></div>
+                        <div class="brand-logo"><img src="uploads/53-SYSKA.webp" alt="Syska"></div>
+                        <div class="brand-logo"><img src="uploads/10-CROMPTON.webp" alt="Crompton"></div>
+                        <div class="brand-logo"><img src="uploads/8-C_S_1.webp" alt="c&s"></div>
+                        <div class="brand-logo"><img src="uploads/18-GOLDMEDAL.webp" alt="GOLDMEDAL"></div>
+                        <div class="brand-logo"><img src="uploads/60-WIPRO.webp" alt="Wipro"></div>
+                        <div class="brand-logo"><img src="uploads/39-LEGRAND.webp" alt="Legrand"></div>
+                        <div class="brand-logo"><img src="uploads/L_and_T_logo.webp" alt="L&T"></div>
+                        <div class="brand-logo"><img src="uploads/49-RR_KABEL.webp" alt="rr"></div>
+                        <div class="brand-logo"><img src="uploads/17-GM.webp" alt="gm"></div>
+                        <div class="brand-logo"><img src="uploads/14-ELECTRON_1.webp" alt="ELECTRON"></div>
+                        <div class="brand-logo"><img src="uploads/19-GREATWHITE.webp" alt="Legrand"></div>
+                        <div class="brand-logo"><img src="uploads/45-POLYCAB.webp" alt="Legrand"></div>
+                        <div class="brand-logo"><img src="uploads/15-FINOLX.webp" alt="Legrand"></div>
+                        <div class="brand-logo"><img src="uploads/3-9ELECTRIC.webp" alt="Legrand"></div>
+                    </div>
+                    
+                </div>
+                <div class="category-display-grid">
+                    <div class="category-card">
+                        <div class="category-header"><h3>Best Sellers</h3><a href="#products" class="see-more-link nav-link">See More</a></div>
+                        <div class="category-product-grid" id="best-sellers-list"></div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-header"><h3>Special Offers</h3><a href="#products" class="see-more-link nav-link">See More</a></div>
+                        <div class="category-product-grid" id="special-offers-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products-section" class="page-section" style="display: none;">
+            <div class="container">
+                <div class="product-filters-top">
+                    <div class="search-container-top"><input type="text" id="search-input" placeholder="Search products..."></div>
+                    <div class="filter-block"><h3>Categories</h3><ul id="category-filter-list" class="filter-list"></ul></div>
+                    <div class="filter-block"><h3>Brands</h3><ul id="brand-filter-list" class="filter-list"></ul></div>
+                </div>
+                <div class="product-main-content">
+                    <div class="product-grid" id="product-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-section" class="page-section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-form-container">
+                        <h3>Send us a Message</h3>
+                        <form id="feedback-form">
+                            <div class="form-group"><label for="contact-name">Your Name</label><input type="text" id="contact-name" name="name" required></div>
+                            <div class="form-group"><label for="contact-email">Your Email</label><input type="email" id="contact-email" name="email" required></div>
+                            <div class="form-group"><label for="contact-message">Message</label><textarea id="contact-message" name="message" rows="5" required></textarea></div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                     <div class="contact-details-container">
+                        <h3>Contact Information</h3>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Your Shop Location, Near Srivilliputhur, Tamil Nadu, India</p>
+                            <p><i class="fas fa-phone"></i> +91 12345 67890</p>
+                            <p><i class="fas fa-envelope"></i> support@arunjuna.com</p>
+                        </div>
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3933.325134261735!2d77.7952305748897!3d9.68358329047438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMjcnMDAuOSJOIDc3wrA0Nyc1Mi4xIlE!5e0!3m2!1sen!2sin!4v1724850000000!5m2!1sen!2sin" 
+                                width="100%" 
+                                height="250" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="account-section" class="page-section" style="display: none;">
+            <div class="container">
+                <div class="account-layout">
+                    <aside class="account-sidebar">
+                        <div class="account-sidebar-header">
+                            <i class="fas fa-user-circle"></i>
+                            <div><span>Hello,</span><h4 id="account-username-sidebar">User</h4></div>
+                        </div>
+                        <ul class="account-nav">
+                            <li class="active"><a href="#account-info" data-target="account-info-content"><i class="fas fa-user-edit"></i> Account Information</a></li>
+                            <li><a href="#orders" data-target="orders-content"><i class="fas fa-receipt"></i> Orders</a></li>
+                            <li><a href="#" id="account-signout-btn"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+                        </ul>
+                    </aside>
+                    <main class="account-main">
+                        <div id="account-info-content" class="account-content-panel">
+                            <h3>Account Information</h3>
+                            <form id="account-info-form">
+                                <div class="form-group-inline"><label for="account-name">Name</label><input type="text" id="account-name" name="username" readonly><button type="button" class="btn-link edit-btn" data-field="account-name">Edit</button></div>
+                                <div class="form-group-inline"><label for="account-email">Email</label><input type="email" id="account-email" name="email" readonly></div>
+                                <div class="form-group-inline"><label for="account-mobile">Mobile Number</label><input type="tel" id="account-mobile" name="mobile_number" readonly><button type="button" class="btn-link edit-btn" data-field="account-mobile">Edit</button></div>
+                                <div class="form-actions"><button type="submit" class="btn btn-primary" id="save-account-info-btn" style="display: none;">Save Changes</button><p id="account-form-message"></p></div>
+                            </form>
+                        </div>
+                        <div id="orders-content" class="account-content-panel" style="display: none;">
+                             <h3>My Orders</h3>
+                             <div class="dashboard-card">
+                                <div class="table-responsive">
+                                    <table id="user-orders-table-account">
+                                        <thead><tr><th>Order ID</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+                                        <tbody id="user-orders-tbody-account"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NEW: Checkout Page Section -->
+        <section id="checkout-section" class="page-section" style="display: none;">
+            <div class="container checkout-container">
+                <div class="checkout-form-column">
+                    <div class="checkout-form-container">
+                        <h3>1. BILLING ADDRESS</h3>
+                        <form id="checkout-address-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="checkout-name">Full Name *</label>
+                                    <input type="text" id="checkout-name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkout-mobile">Mobile Number *</label>
+                                    <input type="tel" id="checkout-mobile" name="mobile_number" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="checkout-email">Email Id *</label>
+                                    <input type="email" id="checkout-email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkout-alt-mobile">Alternate Mobile No</label>
+                                    <input type="tel" id="checkout-alt-mobile" name="alt_mobile_number">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="checkout-address1">Address Line 1 *</label>
+                                    <input type="text" id="checkout-address1" name="address1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkout-address2">Address Line 2</label>
+                                    <input type="text" id="checkout-address2" name="address2">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="checkout-zip">ZIP / Postal Code *</label>
+                                    <input type="text" id="checkout-zip" name="zip" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkout-city">City *</label>
+                                    <input type="text" id="checkout-city" name="city" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="checkout-state">State *</label>
+                                    <input type="text" id="checkout-state" name="state" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkout-country">Country *</label>
+                                    <select id="checkout-country" name="country" required>
+                                        <option value="India">India</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- NEW: Payment Options -->
+                            <h3>2. PAYMENT OPTIONS</h3>
+                            <div class="payment-options">
+                                <div class="form-group payment-option">
+                                    <input type="radio" id="payment-cod" name="payment-method" value="cod" checked>
+                                    <label for="payment-cod">Cash on Delivery</label>
+                                </div>
+                                <div class="form-group payment-option">
+                                    <input type="radio" id="payment-online" name="payment-method" value="online">
+                                    <label for="payment-online">Online Payment</label>
+                                </div>
+                                <div id="online-payment-details" style="display: none;">
+                                    <select id="online-payment-type" class="form-group">
+                                        <option value="upi">UPI</option>
+                                        <option value="card">Debit & Credit Cards</option>
+                                        <option value="netbanking">Net Banking</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <p id="checkout-message"></p>
+                                <button type="submit" class="btn btn-secondary" id="checkout-pay-button">SAVE AND CONTINUE</button>
+                               
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="checkout-summary-column">
+                    <div class="order-details-card">
+                        <h3>Order Details</h3>
+                        <div class="order-summary-items" id="order-summary-details">
+                            <div class="summary-line"><p>Sub Total</p><p>₹<span id="summary-subtotal">0.00</span></p></div>
+                            <div class="summary-line"><p>GST (18%)</p><p>₹<span id="summary-gst">0.00</span></p></div>
+                        </div>
+                        <div class="order-summary-total">
+                            <div class="summary-line"><h4>Total</h4><h4>₹<span id="summary-total">0.00</span></h4></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+     <section class="category-showcase-section">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="container category-showcase-grid">
+                <a href="#products" class="category-item" data-category="Appliances">
+                    <div class="category-icon-bg">
+                        <img src="uploads/download-removebg-preview (25)).png" alt="Appliances">
+                    </div>
+                    <span>Appliances</span>
+                </a>
+                <a href="#products" class="category-item" data-category="Fans">
+                    <div class="category-icon-bg">
+                        <img src="uploads/download-removebg-preview (25).png" alt="Fans">
+                    </div>
+                    <span>Fans</span>
+                </a>
+                <a href="#products" class="category-item" data-category="Lighting">
+                    <div class="category-icon-bg">
+                        <img src="uploads/2.png" alt="Lighting">
+                    </div>
+                    <span>Lighting</span>
+                </a>
+                <a href="#products" class="category-item" data-category="Measuring Instruments">
+                    <div class="category-icon-bg">
+                        <img src="uploads/3.png" alt="Measuring Instruments">
+                    </div>
+                    <span>Measuring Instruments</span>
+                </a>
+                <a href="#products" class="category-item" data-category="Power Solutions">
+                    <div class="category-icon-bg">
+                        <img src="uploads/OIP-removebg-preview (50).png" alt="Power Solutions">
+                    </div>
+                    <span>Power Solutions</span>
+                </a>
+                <a href="#products" class="category-item" data-category="Safety">
+                    <div class="category-icon-bg">
+                        <img src="uploads/download-removebg-preview (4).png" alt="Safety">
+                    </div>
+                    <span>Safety</span>
+                </a>
+                <a href="#products" class="category-item" data-category="Tools & Equipment">
+                    <div class="category-icon-bg">
+                        <img src="uploads/OIP-removebg-preview (32).png" alt="Tools & Equipment">
+                    </div>
+                    <span>Tools & Equipment</span>
+                </a>
+                <a href="#products" class="category-item" data-category="Wiring">
+                    <div class="category-icon-bg">
+                        <img src="uploads/OIP-removebg-preview (51).png" alt="Wiring">
+                    </div>
+                    <span>Wiring</span>
+                </a>
+            </div>
+        </section>
+<footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="#home">Home</a></li><li><a href="#products">Products</a></li><li><a href="#contact">Contact</a></li></ul></div>
+                <div class="footer-col"><h3>Follow Us</h3><ul><li><a href="#">Facebook</a></li><li><a href="#">Twitter</a></li><li><a href="#">Instagram</a></li></ul></div>
+                <div class="footer-col"><h3>Reach Us</h3><p>Arunjuna Electricals Ltd,<br>Coimbatore, Tamil Nadu,<br>India.</p></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Arunjuna Electrical Shop. All Rights Reserved.</p>
+                <div class="payment-icons"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>Your Cart</h2><span class="close-button" data-modal="cart-modal">&times;</span></div>
+            <div class="modal-body" id="cart-items"></div>
+            <div class="modal-footer">
+                <div class="cart-total"><h3>Total: ₹<span id="cart-total-price">0.00</span></h3></div>
+                <button id="checkout-btn" class="btn btn-primary">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-details-modal" class="modal">
+        <div class="modal-content product-details-content"></div>
+    </div>
+    
+    <div id="order-details-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>Order Details</h2><span class="close-button" data-modal="order-details-modal">&times;</span></div>
+            <div class="modal-body" id="order-details-body"></div>
+        </div>
+    </div>
+
+    <div id="review-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>Write a Review</h2><span class="close-button" data-modal="review-modal">&times;</span></div>
+            <div class="modal-body" id="review-modal-body"></div>
+            <div class="modal-footer">
+                <button id="submit-reviews-btn" class="btn btn-primary">Submit Reviews</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
